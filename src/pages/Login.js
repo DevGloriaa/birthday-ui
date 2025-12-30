@@ -1,56 +1,51 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import "./Login.css"; // <--- Import your new CSS file here
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   return (
-    <div style={styles.container}>
-      <h2>Login</h2>
+    <div className="login-page">
+      <div className="login-card">
+        
+        <div className="login-header">
+          <h2 className="login-title">Welcome Back</h2>
+          <p className="login-subtitle">Please enter your details to sign in.</p>
+        </div>
 
-      <input
-        style={styles.input}
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+        <div className="form-group">
+          <label className="form-label">Email</label>
+          <input
+            className="login-input"
+            type="email"
+            placeholder="example@mail.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
 
-      <input
-        style={styles.input}
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+        <div className="form-group">
+          <label className="form-label">Password</label>
+          <input
+            className="login-input"
+            type="password"
+            placeholder="••••••••"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
 
-      <button style={styles.button}>Login</button>
+        <button className="login-button">Sign In</button>
 
-      <p>
-        No account? <Link to="/signup">Sign up</Link>
-      </p>
+        <p className="login-footer">
+          Don't have an account?{" "}
+          <Link to="/signup" className="login-link">
+            Sign up
+          </Link>
+        </p>
+      </div>
     </div>
   );
 }
-
-const styles = {
-  container: {
-    width: "300px",
-    margin: "100px auto",
-    display: "flex",
-    flexDirection: "column",
-    gap: "10px",
-  },
-  input: {
-    padding: "10px",
-    fontSize: "16px",
-  },
-  button: {
-    padding: "10px",
-    backgroundColor: "#ff69b4",
-    border: "none",
-    color: "white",
-    cursor: "pointer",
-  },
-};
