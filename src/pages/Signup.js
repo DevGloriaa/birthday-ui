@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Login.css"; // We can reuse the same styles!
+import "./Login.css"; 
 
 export default function Signup() {
   const [form, setForm] = useState({
@@ -10,7 +10,7 @@ export default function Signup() {
     password: "",
   });
 
-  // Configuration for the form fields
+
   const fields = [
     { key: "firstName", label: "First Name", type: "text", placeholder: "Jane" },
     { key: "lastName", label: "Last Name", type: "text", placeholder: "Doe" },
