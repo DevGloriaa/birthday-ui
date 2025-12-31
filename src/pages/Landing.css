@@ -1,0 +1,290 @@
+/* src/pages/Landing.css */
+
+/* --- LAYOUT --- */
+.landing-page {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  background-color: #fdfbfb;
+  font-family: 'Quicksand', sans-serif;
+  overflow: hidden; /* Important to clip blurred orbs */
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- NAVBAR --- */
+.landing-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  z-index: 100;
+}
+
+.nav-logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #2D3436;
+  letter-spacing: -0.5px;
+}
+
+.nav-login-btn {
+  text-decoration: none;
+  color: #636e72;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.nav-login-btn:hover {
+  color: #FF6B6B;
+}
+
+/* --- HERO SECTION --- */
+.hero-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 10;
+}
+
+/* --- GLASSMORPHISM CARD --- */
+.glass-card {
+  background: rgba(255, 255, 255, 0.65); /* Semi-transparent white */
+  backdrop-filter: blur(20px); /* The Blur Effect */
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 30px;
+  padding: 60px;
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.05); /* Soft premium shadow */
+  animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- LEFT SIDE TEXT --- */
+.content-left {
+  flex: 1;
+  text-align: left;
+}
+
+.badge {
+  display: inline-block;
+  background-color: rgba(255, 107, 107, 0.1);
+  color: #FF6B6B;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.landing-title {
+  font-size: 3.5rem;
+  color: #2D3436;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+
+.highlight {
+  color: #FF6B6B;
+  position: relative;
+  z-index: 1;
+}
+
+/* Marker effect behind text */
+.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: -5px;
+  width: 105%;
+  height: 15px;
+  background-color: #ffcccc;
+  z-index: -1;
+  transform: rotate(-2deg);
+  border-radius: 4px;
+}
+
+.landing-subtitle {
+  font-size: 1.1rem;
+  color: #636e72;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  max-width: 400px;
+}
+
+/* --- BUTTONS --- */
+.button-group {
+  display: flex;
+  gap: 15px;
+}
+
+.btn {
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 12px; /* Slightly squarer looks more 'app-like' */
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: #2D3436; /* Dark professional button */
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #FF6B6B; /* Pop of color on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #2D3436;
+  border: 2px solid rgba(0,0,0,0.1);
+}
+
+.btn-secondary:hover {
+  border-color: #2D3436;
+  background-color: white;
+}
+
+/* --- RIGHT SIDE GRAPHIC (Pure CSS Calendar) --- */
+.content-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.calendar-graphic {
+  width: 200px;
+  height: 220px;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1), 0 0 0 10px rgba(255,255,255,0.5);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: rotate(5deg) translateY(0px);
+  transition: transform 0.5s ease;
+  animation: floatCal 6s ease-in-out infinite;
+}
+
+.calendar-graphic:hover {
+  transform: rotate(0deg) scale(1.05);
+}
+.calendar-top {
+  height: 60px;
+  background-color: #FF6B6B;
+  width: 100%;
+  /* NEW: Center the month text */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+}
+.calendar-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-date {
+  font-size: 5rem;
+  font-weight: 800;
+  color: #2D3436;
+  line-height: 1;
+}
+
+.calendar-check {
+  font-size: 2rem;
+  margin-top: 10px;
+}
+
+@keyframes floatCal {
+  0%, 100% { transform: rotate(5deg) translateY(0px); }
+  50% { transform: rotate(5deg) translateY(-15px); }
+}
+
+/* --- AMBIENT ORBS (The Professional Balloons) --- */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px); /* This creates the soft glow */
+  opacity: 0.6;
+  z-index: 0;
+  animation: floatOrb 10s infinite alternate;
+}
+
+.orb-1 {
+  width: 400px;
+  height: 400px;
+  background: #ffcccc; /* Soft Red */
+  top: -100px;
+  left: -100px;
+}
+
+.orb-2 {
+  width: 300px;
+  height: 300px;
+  background: #c7ecee; /* Soft Teal */
+  bottom: -50px;
+  right: -50px;
+  animation-delay: -5s;
+}
+
+.orb-3 {
+  width: 200px;
+  height: 200px;
+  background: #ffeaa7; /* Soft Yellow */
+  top: 40%;
+  right: 20%;
+  opacity: 0.4;
+}
+
+@keyframes floatOrb {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(30px, 50px); }
+}
+
+/* --- MOBILE --- */
+@media (max-width: 900px) {
+  .glass-card {
+    flex-direction: column-reverse; /* Put visual on top or bottom */
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .content-left { text-align: center; }
+  
+  .landing-title { font-size: 2.5rem; }
+  
+  .button-group { justify-content: center; }
+  
+  .calendar-graphic {
+    width: 140px;
+    height: 160px;
+    margin-bottom: 30px;
+  }
+  
+  .calendar-date { font-size: 3.5rem; }
+}
