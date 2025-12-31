@@ -1,26 +1,54 @@
 /* src/pages/Login.css */
 
-/* The main page background - Oatmeal color */
+/* Define our Party Palette */
+:root {
+  --party-bg: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); /* Clean slate */
+  --primary-color: #FF6B6B; /* Festive Coral/Red */
+  --primary-hover: #FF5252;
+  --accent-color: #4ECDC4; /* Teal for fun highlights */
+  --text-dark: #2D3436;
+  --text-light: #636e72;
+  --card-bg: #ffffff;
+  --input-bg: #F7F9FC;
+}
+
+/* Fun Slide-Up Animation */
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.9) translateY(20px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* 1. The Party Background */
 .login-page {
   min-height: 100vh;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #F3EEEA;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Quicksand', 'Segoe UI', sans-serif; /* Rounder, friendlier font */
+  
+  /* A fun, subtle gradient background */
+  background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-/* The white card container */
+/* 2. The Card - Bubbly and Soft */
 .login-card {
   width: 100%;
   max-width: 400px;
-  background-color: #FFFFFF;
+  background-color: var(--card-bg);
   padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(74, 59, 50, 0.05);
+  /* Super rounded corners for a friendly feel */
+  border-radius: 30px; 
+  /* A colorful shadow glow */
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1), 0 0 0 10px rgba(255, 255, 255, 0.5);
   display: flex;
   flex-direction: column;
   gap: 20px;
+  
+  /* Trigger Animation */
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 .login-header {
@@ -29,18 +57,20 @@
 }
 
 .login-title {
-  font-size: 28px;
-  color: #4A3B32; /* Dark Coffee */
+  font-size: 32px;
+  color: var(--primary-color);
   margin-bottom: 8px;
-  font-weight: 600;
+  font-weight: 800; /* Bold and loud */
 }
 
 .login-subtitle {
-  font-size: 14px;
-  color: #8C7B70; /* Taupe */
+  font-size: 16px;
+  color: var(--text-light);
   margin: 0;
+  font-weight: 500;
 }
 
+/* 3. Inputs - Pill Shaped */
 .form-group {
   display: flex;
   flex-direction: column;
@@ -49,58 +79,89 @@
 
 .form-label {
   font-size: 14px;
-  font-weight: 500;
-  color: #4A3B32;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-left: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 12px;
 }
 
 .login-input {
-  padding: 14px;
+  width: 100%;
+  padding: 16px 20px; /* More padding for pill shape */
   font-size: 16px;
-  border-radius: 10px;
-  border: 1px solid #EBE0D6; /* Light Tan */
-  background-color: #FAFAFA;
+  border-radius: 50px; /* Full pill shape */
+  border: 2px solid transparent;
+  background-color: var(--input-bg);
   outline: none;
-  transition: all 0.2s;
-  color: #4A3B32;
+  transition: all 0.3s ease;
+  color: var(--text-dark);
+  box-sizing: border-box;
+  font-weight: 600;
+}
+
+.login-input::placeholder {
+  color: #b2bec3;
+  font-weight: 400;
 }
 
 .login-input:focus {
-  border-color: #A67B5B; /* Focus color */
   background-color: #fff;
+  border-color: var(--accent-color); /* Turns Teal when clicked */
+  box-shadow: 0 4px 15px rgba(78, 205, 196, 0.2);
 }
 
+/* 4. The Action Button - The "Gift" */
 .login-button {
-  margin-top: 10px;
-  padding: 16px;
-  background-color: #A67B5B; /* Soft Brown/Caramel */
+  margin-top: 15px;
+  padding: 18px;
+  background-color: var(--primary-color);
   color: white;
   border: none;
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: 600;
+  border-radius: 50px; /* Pill shape */
+  font-size: 18px;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(166, 123, 91, 0.3);
+  box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+  letter-spacing: 0.5px;
 }
 
 .login-button:hover {
-  background-color: #8D6E63; /* Darker Brown */
-  transform: translateY(-2px);
+  background-color: var(--primary-hover);
+  transform: translateY(-3px) scale(1.02); /* Little pop effect */
+  box-shadow: 0 15px 30px rgba(255, 107, 107, 0.4);
 }
 
+.login-button:active {
+  transform: scale(0.95);
+}
+
+/* Footer Links */
 .login-footer {
   text-align: center;
   font-size: 14px;
-  color: #8C7B70;
+  color: var(--text-light);
   margin-top: 10px;
-}
-
-.login-link {
-  color: #A67B5B;
-  text-decoration: none;
   font-weight: 600;
 }
 
+.login-link {
+  color: var(--accent-color); /* Teal link */
+  text-decoration: none;
+  font-weight: 800;
+  transition: color 0.2s;
+}
+
 .login-link:hover {
-  text-decoration: underline;
+  color: var(--primary-color);
+}
+
+/* Mobile Tweak */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 30px 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
 }
