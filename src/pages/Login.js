@@ -25,8 +25,10 @@ export default function Login() {
         throw new Error("Invalid credentials");
       }
 
-      const token = await response.text();
-      localStorage.setItem("token", token);
+      const data = await response.json();
+
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("userName", data.firstName);
       
       navigate("/home"); 
     } catch (err) {
