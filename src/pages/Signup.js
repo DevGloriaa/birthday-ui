@@ -10,7 +10,6 @@ export default function Signup() {
     password: "",
   });
 
-
   const fields = [
     { key: "firstName", label: "First Name", type: "text", placeholder: "Jane" },
     { key: "lastName", label: "Last Name", type: "text", placeholder: "Doe" },
@@ -20,6 +19,14 @@ export default function Signup() {
 
   return (
     <div className="login-page">
+      
+      {/* BACKGROUND BALLOONS */}
+      <div className="balloon b1"></div>
+      <div className="balloon b2"></div>
+      <div className="balloon b3"></div>
+      <div className="balloon b4"></div>
+      <div className="balloon b5"></div>
+
       <div className="login-card">
         
         <div className="login-header">
@@ -46,7 +53,7 @@ export default function Signup() {
 
         <p className="login-footer">
           Already have an account?{" "}
-          <Link to="/" className="login-link">
+          <Link to="/login" className="login-link">
             Login
           </Link>
         </p>
