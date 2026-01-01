@@ -50,7 +50,6 @@ export default function AddBirthday() {
       navigate("/home");
 
     } catch (err) {
-      console.error(err);
       setError("Could not save birthday. Please try again.");
     } finally {
       setLoading(false);
@@ -67,7 +66,6 @@ export default function AddBirthday() {
 
       <div className="add-card">
         
-        {/* NEW: Back Navigation Link */}
         <Link to="/home" className="back-link">
           ← Back to Dashboard
         </Link>
@@ -82,7 +80,7 @@ export default function AddBirthday() {
         <form onSubmit={handleSubmit}>
           
           <div className="form-group">
-            <label className="form-label">Friend's Name</label>
+            <label className="form-label">Name</label>
             <input
               className="add-input"
               type="text"
@@ -130,7 +128,6 @@ export default function AddBirthday() {
           </div>
 
           <div className="button-row">
-            {/* The cancel button is still here as a secondary option */}
             <Link to="/home" className="btn-cancel">
               Cancel
             </Link>
