@@ -7,36 +7,9 @@
   position: relative;
   background-color: #fdfbfb;
   font-family: 'Quicksand', sans-serif;
-  overflow: hidden; /* Important to clip blurred orbs */
+  overflow: hidden; /* Essential for clipping floating balloons */
   display: flex;
   flex-direction: column;
-}
-
-/* --- NAVBAR --- */
-.landing-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  z-index: 100;
-}
-
-.nav-logo {
-  font-weight: 700;
-  font-size: 1.2rem;
-  color: #2D3436;
-  letter-spacing: -0.5px;
-}
-
-.nav-login-btn {
-  text-decoration: none;
-  color: #636e72;
-  font-weight: 600;
-  transition: color 0.2s;
-}
-
-.nav-login-btn:hover {
-  color: #FF6B6B;
 }
 
 /* --- HERO SECTION --- */
@@ -46,7 +19,7 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  z-index: 10;
+  z-index: 10; /* Ensures content sits ABOVE the balloons */
 }
 
 /* --- GLASSMORPHISM CARD --- */
@@ -135,19 +108,19 @@
 .btn {
   text-decoration: none;
   padding: 14px 28px;
-  border-radius: 12px; /* Slightly squarer looks more 'app-like' */
+  border-radius: 12px;
   font-weight: 700;
   font-size: 1rem;
   transition: all 0.2s ease;
 }
 
 .btn-primary {
-  background-color: #2D3436; /* Dark professional button */
+  background-color: #2D3436;
   color: white;
 }
 
 .btn-primary:hover {
-  background-color: #FF6B6B; /* Pop of color on hover */
+  background-color: #FF6B6B;
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
 }
@@ -187,11 +160,11 @@
 .calendar-graphic:hover {
   transform: rotate(0deg) scale(1.05);
 }
+
 .calendar-top {
   height: 60px;
   background-color: #FF6B6B;
   width: 100%;
-  /* NEW: Center the month text */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -200,6 +173,7 @@
   font-size: 1.5rem;
   letter-spacing: 2px;
 }
+
 .calendar-body {
   flex: 1;
   display: flex;
@@ -225,45 +199,99 @@
   50% { transform: rotate(5deg) translateY(-15px); }
 }
 
-/* --- AMBIENT ORBS (The Professional Balloons) --- */
-.orb {
+/* --- THEME: BALLOONS (Updated High Visibility) --- */
+.balloon {
   position: absolute;
-  border-radius: 50%;
-  filter: blur(80px); /* This creates the soft glow */
-  opacity: 0.6;
-  z-index: 0;
-  animation: floatOrb 10s infinite alternate;
+  bottom: -150px; /* Start well below the screen */
+  width: 60px;
+  height: 75px;
+  /* This creates the egg-like balloon shape */
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  z-index: 0; /* Behind the content */
+  
+  /* UPDATED: Full Opacity and 3D Shadow */
+  opacity: 1; 
+  box-shadow: inset -10px -10px 20px rgba(0,0,0,0.1), 5px 10px 15px rgba(0,0,0,0.1);
+  
+  animation: floatBalloon linear infinite;
 }
 
-.orb-1 {
-  width: 400px;
-  height: 400px;
-  background: #ffcccc; /* Soft Red */
-  top: -100px;
-  left: -100px;
+/* The String */
+.balloon::before {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px; /* Slightly thicker string for visibility */
+  height: 40px;
+  background: rgba(0,0,0,0.3);
 }
 
-.orb-2 {
-  width: 300px;
-  height: 300px;
-  background: #c7ecee; /* Soft Teal */
-  bottom: -50px;
-  right: -50px;
-  animation-delay: -5s;
+/* The Knot */
+.balloon::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 6px solid inherit; /* Matches the balloon color */
 }
 
-.orb-3 {
-  width: 200px;
-  height: 200px;
-  background: #ffeaa7; /* Soft Yellow */
-  top: 40%;
-  right: 20%;
-  opacity: 0.4;
+/* Balloon Variations (Vibrant Colors) */
+.b1 {
+  background-color: #ff5252; /* Vibrant Red */
+  left: 10%;
+  animation-duration: 15s;
+  animation-delay: 0s;
 }
 
-@keyframes floatOrb {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(30px, 50px); }
+.b2 {
+  background-color: #0984e3; /* Strong Blue */
+  left: 20%;
+  transform: scale(0.7); 
+  animation-duration: 18s;
+  animation-delay: 4s;
+}
+
+.b3 {
+  background-color: #fdcb6e; /* Deep Orange/Yellow */
+  left: 55%;
+  transform: scale(1.1); 
+  animation-duration: 20s;
+  animation-delay: 2s;
+}
+
+.b4 {
+  background-color: #00b894; /* Solid Teal */
+  left: 80%;
+  transform: scale(0.9);
+  animation-duration: 25s;
+  animation-delay: 6s;
+}
+
+.b5 {
+  background-color: #6c5ce7; /* Deep Purple */
+  left: 90%;
+  transform: scale(0.8);
+  animation-duration: 22s;
+  animation-delay: 10s;
+}
+
+@keyframes floatBalloon {
+  0% {
+    bottom: -150px;
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(30px); /* Slight sway to the right */
+  }
+  100% {
+    bottom: 110vh; /* Float completely off the top */
+    transform: translateX(-30px); /* Slight sway to the left */
+  }
 }
 
 /* --- MOBILE --- */
