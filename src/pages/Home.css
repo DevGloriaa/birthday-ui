@@ -1,0 +1,213 @@
+/* src/pages/Home.css */
+
+/* --- SHARED VARIABLES (Matches your theme) --- */
+:root {
+  --primary: #FF6B6B;
+  --primary-hover: #FF5252;
+  --accent: #4ECDC4;
+  --dark: #2D3436;
+  --grey: #636e72;
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.8);
+}
+
+/* --- PAGE LAYOUT --- */
+.home-page {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #fdfbfb;
+  position: relative;
+  overflow-x: hidden;
+  font-family: 'Quicksand', sans-serif;
+  color: var(--dark);
+}
+
+.dashboard-container {
+  position: relative;
+  z-index: 10; /* Above balloons */
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* --- HEADER SECTION --- */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  animation: fadeInDown 0.8s ease;
+}
+
+.dashboard-header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0;
+  color: var(--dark);
+}
+
+.dashboard-header p {
+  margin: 5px 0 0;
+  color: var(--grey);
+  font-weight: 600;
+}
+
+.profile-icon {
+  width: 45px;
+  height: 45px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  border: 2px solid rgba(255,255,255,0.8);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.profile-icon:hover {
+  transform: scale(1.1);
+}
+
+/* --- GLASS PANEL (The Main Card) --- */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+  animation: slideUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 2px dashed rgba(0,0,0,0.05);
+}
+
+.panel-header h2 {
+  font-size: 1.5rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+.count-badge {
+  background: var(--primary);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+/* --- EMPTY STATE --- */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  opacity: 0.8;
+  animation: bounceSlow 3s infinite;
+}
+
+.empty-state h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: var(--dark);
+}
+
+.empty-state p {
+  color: var(--grey);
+  margin-bottom: 30px;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+/* --- ACTION BUTTON --- */
+.add-btn-large {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--primary);
+  color: white;
+  text-decoration: none;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+}
+
+.add-btn-large:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(255, 107, 107, 0.4);
+}
+
+.plus-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounceSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* --- BALLOONS (Copied for isolated functionality) --- */
+.balloon {
+  position: absolute;
+  bottom: -150px;
+  width: 60px;
+  height: 75px;
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  z-index: 0;
+  opacity: 1; 
+  box-shadow: inset -10px -10px 20px rgba(0,0,0,0.1), 5px 10px 15px rgba(0,0,0,0.1);
+  animation: floatBalloon linear infinite;
+}
+
+.balloon::before {
+  content: ""; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
+  width: 2px; height: 40px; background: rgba(0,0,0,0.3);
+}
+.balloon::after {
+  content: ""; position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%);
+  border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 6px solid inherit;
+}
+
+.b1 { background: #ff5252; left: 10%; animation-duration: 15s; }
+.b2 { background: #0984e3; left: 20%; transform: scale(0.7); animation-duration: 18s; animation-delay: 4s; }
+.b3 { background: #fdcb6e; left: 55%; transform: scale(1.1); animation-duration: 20s; animation-delay: 2s; }
+.b4 { background: #00b894; left: 80%; transform: scale(0.9); animation-duration: 25s; animation-delay: 6s; }
+.b5 { background: #6c5ce7; left: 90%; transform: scale(0.8); animation-duration: 22s; animation-delay: 10s; }
+
+@keyframes floatBalloon {
+  0% { bottom: -150px; transform: translateX(0); }
+  50% { transform: translateX(30px); }
+  100% { bottom: 110vh; transform: translateX(-30px); }
+}
