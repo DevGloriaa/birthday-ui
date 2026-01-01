@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Login.css"; // <--- Import your new CSS file here
+import "./Login.css"; 
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -8,6 +8,14 @@ export default function Login() {
 
   return (
     <div className="login-page">
+      
+      {/* BACKGROUND BALLOONS */}
+      <div className="balloon b1"></div>
+      <div className="balloon b2"></div>
+      <div className="balloon b3"></div>
+      <div className="balloon b4"></div>
+      <div className="balloon b5"></div>
+
       <div className="login-card">
         
         <div className="login-header">
