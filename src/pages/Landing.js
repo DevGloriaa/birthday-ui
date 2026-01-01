@@ -5,16 +5,13 @@ export default function Landing() {
   return (
     <div className="landing-page">
       
-      {/* BACKGROUND ORBS */}
-      <div className="orb orb-1"></div>
-      <div className="orb orb-2"></div>
-      <div className="orb orb-3"></div>
-
-      {/* NAVBAR */}
-      <nav className="landing-nav">
-        <div className="nav-logo">🎂 BirthYay</div>
-        <Link to="/login" className="nav-login-btn">Login</Link>
-      </nav>
+      {/* BACKGROUND BALLOONS */}
+      {/* Several balloons with different delay classes */}
+      <div className="balloon b1"></div>
+      <div className="balloon b2"></div>
+      <div className="balloon b3"></div>
+      <div className="balloon b4"></div>
+      <div className="balloon b5"></div>
 
       {/* HERO CONTENT */}
       <div className="hero-container">
@@ -43,7 +40,6 @@ export default function Landing() {
           {/* RIGHT SIDE - Calendar Graphic */}
           <div className="content-right">
             <div className="calendar-graphic">
-              {/* UPDATED: Added DEC here */}
               <div className="calendar-top">DEC</div> 
               <div className="calendar-body">
                 <span className="calendar-date">11</span>
